@@ -105,7 +105,7 @@ const setNutUi = (app: App) => {
 }
 ```
 
-## Eslint Prettier CommitLint
+## Eslint Prettier Husky Lint-Staged CommitLint
 
 1. 安装vscode 插件 eslint prettier volar
 2. npm install @vue/eslint-config-prettier @vue/eslint-config-typescript eslint-plugin-prettier -D
@@ -123,8 +123,30 @@ const setNutUi = (app: App) => {
 
 配置tsconfig.json `"jsx": "preserve"` 处理
 6. 安装husky
+
+方便使用git 的pre commit钩子
 ```shell
   npm install husky -D
   npx husky install
   npx husky add .husky/pre-commit "echo test"
 ```
+
+7. 安装lint-staged 修改husky pre-commit
+
+lint-staged能够让lint只检测暂存区的文件
+
+```shell
+npm install lint-staged  -D
+
+# pre-commit
+echo "---lint检查开始---"
+npx lint-staged
+echo "---lint检查结束---"
+
+# 配置.lintstatedrc.js 执行校验指令
+module.exports = {
+  'src/**/*.{js,jsx,vue,ts,tsx}': ['npm run lint'],
+  'src/**/*.{vue,ts}': ['npm run tsc'],
+};
+```
+

@@ -1,4 +1,6 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-echo test
+echo "---lint检查开始---"
+npx lint-staged
+echo "---lint检查结束---"
