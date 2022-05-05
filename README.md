@@ -149,4 +149,62 @@ module.exports = {
   'src/**/*.{vue,ts}': ['npm run tsc'],
 };
 ```
+8. 安装commit lint
+   
+```shell
+# Install commitlint cli and conventional config
+npm install --save-dev @commitlint/{config-conventional,cli}
+# For Windows:
+npm install @commitlint/config-conventional  @commitlint/cli -D
+# Configure commitlint to use conventional config
+echo "module.exports = {extends: ['@commitlint/config-conventional']}" > commitlint.config.js
+# Add hook
+npx husky add .husky/commit-msg 'npx --no -- commitlint --edit "$1"'
+```
 
+遇到的问题
+>使用 commitlint 时报错：commitlint.config.js:1 SyntaxError: Invalid or unexpected token
+原来是因为用 echo "module.exports = {extends: ['@commitlint/config-conventional']}" > commitlint.config.js 这条命令
+生成的 commitlint.config.js 文件不是 utf8 格式的，将文件转成 utf8 格式的就没问题了
+
+8. 扩展 git cz  commitizen 安装
+```shell
+# 第一步：全局安装commitizen，安装命令如下。
+npm install commitizen -g
+# 第二步：在项目目录里，运行下面的命令, 初始化cz-conventional-changelog
+commitizen init cz-conventional-changelog --save --save-exact
+# 第三步：package.json 配置
+scripts: {
+  "push": "git add . && cz && git push"
+}
+"config": {
+  "commitizen": {
+    "path": "./node_modules/cz-conventional-changelog-zh"
+    # 中文翻译包 npm i cz-conventional-changelog-zh -D
+    "path": "./node_modules/cz-conventional-changelog-zh"
+  }
+},
+ 
+```
+最后，将之前符合Angular规范的cz-conventional-changelog适配器路径改成cz-customizable适配器路径：cz-customizable默认会去读取项目中 .cz-config.js配置
+W
+[cz-config-EXAMPLE.js](https://github.com/leoforfree/cz-customizable/blob/master/cz-config-EXAMPLE.js)
+
+```shell
+npm install cz-customizable -D
+# 改写配置commitizen package.json
+"config": {
+  "commitizen": {
+    "path": "node_modules/cz-customizable"
+  }
+}
+```
+好吧，还有最后最后，commitlint 的规则被修改了，也要使用适配器
+```shell
+npm install commitlint-config-cz -D
+# 改写配置commitlint.config.js
+module.exports = { 
+  # // extends: ['@commitlint/config-conventional']
+  extends: ['cz']
+};
+```

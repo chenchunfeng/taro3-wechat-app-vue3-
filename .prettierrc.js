@@ -14,7 +14,7 @@ module.exports = {
   // 换行符使用 lf
   endOfLine: 'auto',
   // 一行最多 100 字符
-  printWidth: 100,
+  printWidth: 120,
   // 对象的 key 仅在必要时用引号
   quoteProps: 'as-needed',
   // 大括号内的首尾需要空格

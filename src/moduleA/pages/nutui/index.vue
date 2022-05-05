@@ -9,12 +9,7 @@
   />
 
   <nut-cell title="无标题弹框" @click="noTitleClick"></nut-cell>
-  <nut-dialog
-    content="这是无标题弹框。"
-    v-model:visible="visible2"
-    @cancel="onCancel"
-    @ok="onOk"
-  />
+  <nut-dialog content="这是无标题弹框。" v-model:visible="visible2" @cancel="onCancel" @ok="onOk" />
 
   <nut-cell title="提示弹框" @click="tipsClick"></nut-cell>
   <nut-dialog
@@ -37,22 +32,22 @@
 </template>
 
 <script lang="ts" setup>
-import "./index.scss";
-import { ref } from "vue";
-import { Dialog as NutDialog, Cell as NutCell } from "@nutui/nutui-taro";
+import './index.scss';
+import { ref } from 'vue';
+import { Dialog as NutDialog, Cell as NutCell } from '@nutui/nutui-taro';
 const visible1 = ref(false);
 const visible2 = ref(false);
 const visible3 = ref(false);
 const visible4 = ref(false);
-const closeContent = ref("");
+const closeContent = ref('');
 const sleep = () => new Promise((resolve) => setTimeout(resolve, 1000));
 const countDown = (second: number) => `倒计时 ${second} 秒`;
 
 const onCancel = () => {
-  console.log("event cancel");
+  console.log('event cancel');
 };
 const onOk = () => {
-  console.log("event ok");
+  console.log('event ok');
 };
 const onOkAsync = () => {
   sleep()

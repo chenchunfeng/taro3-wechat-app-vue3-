@@ -2,7 +2,7 @@
   <view class="index">
     <Counter />
     <nut-button @click="goNutUi" type="primary">跳转NutUi</nut-button>
-    123
+    test 1
   </view>
 </template>
 
