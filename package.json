@@ -27,6 +27,7 @@
     "dev:quickapp": "npm run build:quickapp -- --watch",
     "tsc": "vue-tsc --noEmit --skipLibCheck",
     "lint": "eslint --ext .vue --ext .js --ext .ts src/",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "push": "git add . && cz && git push"
   },
   "config": {
@@ -67,6 +68,7 @@
     "babel-plugin-import": "^1.13.5",
     "babel-preset-taro": "3.4.7",
     "commitlint-config-cz": "^0.13.3",
+    "conventional-changelog-cli": "^2.2.2",
     "cz-conventional-changelog": "^3.3.0",
     "cz-conventional-changelog-zh": "^0.0.2",
     "cz-customizable": "^6.3.0",

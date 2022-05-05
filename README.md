@@ -30,7 +30,9 @@
 - Taro3 Vue3 Ts Pinia（由taro cli 官方模板生成）
 - 组件库 NutUI
 - 小程序分包配置
-- Eslint Prettier CommitLint
+- Eslint Prettier Husky Lint-Staged CommitLint
+- 根据commit记录生成changelog
+- 版本发布标准自动化（standard-version） <b>TODO</b>
 - Vue DevTools 调试
 - 苹果底部安全区域适配，预留1px
 
@@ -198,7 +200,12 @@ npm install cz-customizable -D
     "path": "node_modules/cz-customizable"
   }
 }
+
+
 ```
+
+
+
 好吧，还有最后最后，commitlint 的规则被修改了，也要使用适配器
 ```shell
 npm install commitlint-config-cz -D
@@ -208,3 +215,25 @@ module.exports = {
   extends: ['cz']
 };
 ```
+## 根据commit记录生成changelog
+
+生成日志
+```shell
+# 也可以全局安装
+npm install conventional-changelog-cli -D
+"changelog": "npx conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
+```
+
+- 基本使用
+  >-p angular | atom 用来指定使用的 commit message 标准
+  >-i CHANGELOG.md 表示从 CHANGELOG.md 读取 changelog
+  >-s 表示读写 changelog 为同一文件
+  >-r 表示生成 changelog 所需要使用的 release 版本数量，默认为1，全部则是0
+
+- 自定义参数
+  > todo
+
+## 版本发布标准自动化（standard-version）
+
+standard-version 是一款遵循语义化版本（ semver）和 commit message 标准规范 的版本和 changelog 自动化工具
+todo  大概流程就是
