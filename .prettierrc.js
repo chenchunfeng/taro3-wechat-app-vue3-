@@ -12,11 +12,11 @@ module.exports = {
   // 箭头函数，只有一个参数的时候，也需要括号
   arrowParens: 'always',
   // 换行符使用 lf
-  endOfLine: 'auto',
+  endOfLine: 'lf',
   // 一行最多 100 字符
-  printWidth: 120,
+  printWidth: 100,
   // 对象的 key 仅在必要时用引号
   quoteProps: 'as-needed',
   // 大括号内的首尾需要空格
-  bracketSpacing: true,
+  bracketSpacing: true
 };

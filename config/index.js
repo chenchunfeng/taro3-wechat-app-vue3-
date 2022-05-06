@@ -1,8 +1,8 @@
-const path = require("path");
+const path = require('path');
 
 const config = {
-  projectName: "wechat-app",
-  date: "2022-4-26",
+  projectName: 'wechat-app',
+  date: '2022-4-26',
   designWidth: 375,
   deviceRatio: {
     640: 2.34 / 2,
@@ -11,20 +11,20 @@ const config = {
     375: 2 / 1,
   },
   sass: {
-    resource: [path.resolve(__dirname, "..", "src/nutui/custom_theme.scss")],
+    resource: [path.resolve(__dirname, '..', 'src/nutui/custom_theme.scss')],
   },
   alias: {
-    "@": path.resolve(__dirname, "..", "src"),
+    '@': path.resolve(__dirname, '..', 'src'),
   },
-  sourceRoot: "src",
-  outputRoot: "dist",
-  plugins: ["taro-plugin-pinia", "@tarojs/plugin-html"],
+  sourceRoot: 'src',
+  outputRoot: 'dist',
+  plugins: ['taro-plugin-pinia', '@tarojs/plugin-html'],
   defineConstants: {},
   copy: {
     patterns: [],
     options: {},
   },
-  framework: "vue3",
+  framework: 'vue3',
   mini: {
     webpackChain(chain) {
       chain.merge({
@@ -35,7 +35,7 @@ const config = {
               include: [/pinia/],
               use: {
                 babelLoader: {
-                  loader: require.resolve("babel-loader"),
+                  loader: require.resolve('babel-loader'),
                 },
               },
             },
@@ -57,15 +57,15 @@ const config = {
       cssModules: {
         enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
         config: {
-          namingPattern: "module", // 转换模式，取值为 global/module
-          generateScopedName: "[name]__[local]___[hash:base64:5]",
+          namingPattern: 'module', // 转换模式，取值为 global/module
+          generateScopedName: '[name]__[local]___[hash:base64:5]',
         },
       },
     },
   },
   h5: {
-    publicPath: "/",
-    staticDirectory: "static",
+    publicPath: '/',
+    staticDirectory: 'static',
     postcss: {
       autoprefixer: {
         enable: true,
@@ -74,8 +74,8 @@ const config = {
       cssModules: {
         enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
         config: {
-          namingPattern: "module", // 转换模式，取值为 global/module
-          generateScopedName: "[name]__[local]___[hash:base64:5]",
+          namingPattern: 'module', // 转换模式，取值为 global/module
+          generateScopedName: '[name]__[local]___[hash:base64:5]',
         },
       },
     },
@@ -83,8 +83,8 @@ const config = {
 };
 
 module.exports = function (merge) {
-  if (process.env.NODE_ENV === "development") {
-    return merge({}, config, require("./dev"));
+  if (process.env.NODE_ENV === 'development') {
+    return merge({}, config, require('./dev'));
   }
-  return merge({}, config, require("./prod"));
+  return merge({}, config, require('./prod'));
 };

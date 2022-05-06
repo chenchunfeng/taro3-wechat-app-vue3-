@@ -6,8 +6,11 @@ module.exports = {
   },
 
   extends: [
-    'plugin:vue/vue3-essential',
     'eslint:recommended',
+    // vue3 rules link: https://eslint.vuejs.org/rules/
+    // 'plugin:vue/vue3-essential',
+    'plugin:vue/vue3-strongly-recommended',
+    // 'plugin:vue/vue3-recommended',
     '@vue/prettier',
     '@vue/typescript',
     'taro/vue3',
@@ -43,6 +46,8 @@ module.exports = {
     'max-lines': ['error', 500], //限制行数 请勿修改 请优化你的代码
     complexity: ['error', 5], // 限制复杂度
     'require-await': 'error',
+    'vue/multi-word-component-names': 'off',
+    // 'vue/no-v-model-argument': 'off',
   },
 };
 //可以添加规则 禁止删除忽略规则 请严格执行

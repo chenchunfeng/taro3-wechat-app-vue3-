@@ -35,6 +35,9 @@
 - 版本发布标准自动化（standard-version） <b>TODO</b>
 - Vue DevTools 调试
 - 苹果底部安全区域适配，预留1px
+- axios 封装
+- pinia 状态管理demo
+- 全局样式配置
 
 ## 组件库 NutUI 安装
 
@@ -237,3 +240,21 @@ npm install conventional-changelog-cli -D
 
 standard-version 是一款遵循语义化版本（ semver）和 commit message 标准规范 的版本和 changelog 自动化工具
 todo  大概流程就是
+
+参考 https://www.csdn.net/tags/NtTaYgwsMjQwNTctYmxvZwO0O0OO0O0O.html
+
+
+## Vue DevTools 调试
+
+自 Taro 3.x 改造为运行时框架后，有不少同学抱怨小程序开发者工具的 AppData 面板看到的都是 Taro 虚拟 DOM 的序列化结果，而不是页面的 data 数据。为了缓解这个问题，并进一步地提升开发者的开发体验，Taro 对 React DevTools 和 Vue DevTools 进行了适配。只需要简单地配置，就能够和开发 Web 应用时一样使用框架的 DevTools。
+```shell
+# 1. 安装
+npm install @tarojs/plugin-vue-devtools -D
+# 2.配置 Taro 插件  config/dev.js
+config = {
+  plugins: isOpenDevTools ? ['@tarojs/plugin-vue-devtools'] : [],,
+  // ...
+}
+# 2.默认不开启 devtools 调试 新增 script 开启 package.json
+"devtools:weapp": "npm run build:weapp -- --watch --devtools",
+```
