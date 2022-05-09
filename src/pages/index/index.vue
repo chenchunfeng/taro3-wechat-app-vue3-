@@ -2,6 +2,8 @@
   <view class="index">
     <Counter />
     <nut-button @click="goNutUi" type="primary">跳转NutUi</nut-button>
+    <nut-button @click="goRequest" type="primary">request</nut-button>
+    <nut-button @click="goCss" type="primary">css</nut-button>
     test 1
   </view>
 </template>
@@ -20,7 +22,14 @@ export default {
 
 <script lang="ts" setup>
 import Taro from '@tarojs/taro';
+
 const goNutUi = () => {
-  Taro.navigateTo({ url: '/moduleA/pages/nutui/index' });
+  Taro.navigateTo({ url: '/subPackages/moduleA/pages/nutui/index' });
+};
+const goRequest = () => {
+  Taro.navigateTo({ url: '/subPackages/moduleA/pages/request/index' });
+};
+const goCss = () => {
+  Taro.navigateTo({ url: '/pages/css/index' });
 };
 </script>

@@ -35,7 +35,7 @@
 - 版本发布标准自动化（standard-version） <b>TODO</b>
 - Vue DevTools 调试
 - 苹果底部安全区域适配，预留1px
-- axios 封装
+- request 封装
 - pinia 状态管理demo
 - 全局样式配置
 
@@ -78,12 +78,13 @@ const setNutUi = (app: App) => {
 ├── src
 |   ├── pages
 |   |   └── index
-|   ├── moduleA
-|   |   └── pages
-|   |       ├── pageA
-|   |       └── pageB
-|   ├── moduleB
-|   |   └── pages
+|   |── subPackages
+|   |   ├── moduleA
+|   |   |   └── pages
+|   |   |       ├── pageA
+|   |   |       └── pageB
+|   |   ├── moduleB
+|   |   |   └── pages
 |   ├── app.css
 |   ├── app.json
 |   └── app.js
@@ -258,3 +259,70 @@ config = {
 # 2.默认不开启 devtools 调试 新增 script 开启 package.json
 "devtools:weapp": "npm run build:weapp -- --watch --devtools",
 ```
+## request 封装
+
+- 别名vscode alias 不识别问题
+
+```shell
+#  tsconfig.json  compilerOptions 中
+"paths": {
+    "@/*": [
+      "src/*"
+    ]
+},
+```
+
+- 处理h5跨域问题，配置devServer 及 defineConstants HOST
+```javascript
+// config/dev.js
+const args = process.argv;
+const isOpenDevTools = args.includes('--devtools');
+
+const isH5 = process.env.TARO_ENV === 'h5';
+const HOST = '"https://blm-mrb.dev.bzlrobot-ift.com"';
+
+module.exports = {
+  env: {
+    NODE_ENV: '"development"',
+  },
+  // 新增
+  defineConstants: {
+    HOST: isH5 ? '""' : HOST,
+  },
+  mini: {},
+  h5: {
+    // 新增
+    devServer: {
+      proxy: {
+        '/api': {
+          target: 'https://blm-mrb.dev.bzlrobot-ift.com',
+          changeOrigin: true,
+          secure: false,
+        },
+      },
+    },
+  },
+  plugins: isOpenDevTools ? ['@tarojs/plugin-vue-devtools'] : [],
+};
+
+// utils/request.js, 添加baseUrl
+
+// @ts-ignore  在 config 中通过 defineConstants 配置的
+const baseUrl = HOST;
+
+const instance = axios.create({
+  baseURL: baseUrl,
+  timeout: 30 * 1000,
+  headers: {
+    'Content-Type': 'application/json;charset=UTF-8',
+  },
+});
+
+```
+
+- 使用taro-axios
+  
+vue文件中不直接写api链接，统一放到api文件夹中调用
+
+
+## 全局样式配置

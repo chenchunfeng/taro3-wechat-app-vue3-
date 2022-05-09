@@ -39,7 +39,7 @@ module.exports = {
   // 仅在feat、fix时填写破坏性更改
   allowBreakingChanges: ['feat', 'fix'],
   // 表示要跳过哪些步骤
-  skipQuestions: ['body', 'footer'],
+  skipQuestions: ['body', 'breaking', 'footer'],
   // subject 限制长度
   subjectLimit: 100,
   breaklineChar: '|', // 设置body和footer中的换行符

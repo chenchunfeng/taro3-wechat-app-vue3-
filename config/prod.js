@@ -1,8 +1,11 @@
+const HOST = '"https://blm-mrb.dev.bzlrobot-ift.com"';
+
 module.exports = {
   env: {
-    NODE_ENV: '"production"'
+    NODE_ENV: '"production"',
   },
   defineConstants: {
+    HOST,
   },
   mini: {},
   h5: {
@@ -14,5 +17,5 @@ module.exports = {
      *     .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin, [])
      * }
      */
-  }
-}
+  },
+};

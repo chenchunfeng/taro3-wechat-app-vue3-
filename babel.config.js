@@ -3,31 +3,31 @@
 module.exports = {
   presets: [
     [
-      "taro",
+      'taro',
       {
-        framework: "vue3",
+        framework: 'vue3',
         ts: true,
       },
     ],
   ],
   plugins: [
     [
-      "import",
+      'import',
       {
-        libraryName: "@nutui/nutui",
-        libraryDirectory: "dist/packages/_es",
+        libraryName: '@nutui/nutui',
+        libraryDirectory: 'dist/packages/_es',
         camel2DashComponentName: false,
       },
-      "nutui3-vue",
+      'nutui3-vue',
     ],
     [
-      "import",
+      'import',
       {
-        libraryName: "@nutui/nutui-taro",
-        libraryDirectory: "dist/packages/_es",
+        libraryName: '@nutui/nutui-taro',
+        libraryDirectory: 'dist/packages/_es',
         camel2DashComponentName: false,
       },
-      "nutui3-taro",
+      'nutui3-taro',
     ],
   ],
 };

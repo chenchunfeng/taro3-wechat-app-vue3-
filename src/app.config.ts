@@ -1,6 +1,6 @@
 export default {
   // 主包配置
-  pages: ['pages/index/index'],
+  pages: ['pages/index/index', 'pages/css/index'],
   window: {
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#fff',
@@ -10,8 +10,8 @@ export default {
   subpackages: [
     // 分包配置
     {
-      root: 'moduleA',
-      pages: ['pages/nutui/index'],
+      root: 'subPackages/moduleA',
+      pages: ['pages/nutui/index', 'pages/request/index'],
     },
   ],
 };
